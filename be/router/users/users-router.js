@@ -1,14 +1,12 @@
 const express = require('express');
-
 const router = express.Router();
-
-const tasks = require("./data-model");
+const users = require("./users-model");
 
 
 router.get("/", async (req, res) => {
   try {
-    let task = await tasks.find();
-    res.json(task);
+    let allUsers = await users.find();
+    res.json(allUsers);
   } catch (e) {
     res.json({ msg: e });
   }
