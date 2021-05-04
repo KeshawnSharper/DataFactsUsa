@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     let allUsers = await users.find();
     res.json(allUsers);
   } catch (e) {
-    res.json({ msg: e });
+    res.json({ msg: e })
   }
 });
 router.post("/register", async (req, res) => {
