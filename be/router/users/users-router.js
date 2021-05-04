@@ -22,7 +22,7 @@ router.post("/register", async (req, res) => {
     try {
     res.json(user);
     } catch (e) {
-      res.json({ msg: e });
+      res.json({ msg: e })
     }
   });
   router.post("/", async (req, res) => {
