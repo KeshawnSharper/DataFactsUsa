@@ -22,4 +22,12 @@ router.post("/", async (req, res) => {
     res.json({ msg: e });
   }
 });
+router.get("/user/:user_id", async (req, res) => {
+  try {
+    let userFacts = await facts.find({id:req.params.user_id});
+    res.json(userFacts);
+  } catch (e) {
+    res.json({ msg: e });
+  }
+});
 module.exports = router;
