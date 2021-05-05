@@ -1,9 +1,9 @@
 const server = require('./server.js');
-
+const dotenv = require('dotenv').config()
 const PORT = process.env.PORT || 5000;
 const mongoose = require("mongoose");
 // Replace the uri string with your MongoDB deployment's connection string.
-mongoose.connect("mongodb+srv://keshawn09:jav@Script101@cluster0.huozn.mongodb.net/first?retryWrites=true&w=majority",
+mongoose.connect(process.env.connection_string,
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
