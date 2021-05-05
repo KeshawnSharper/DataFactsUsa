@@ -12,7 +12,7 @@ const UsersShema = mongoose.Schema({
     minlength:0
   },
   id:{
-    type:Decimal128,
+    type:Number,
   }
 });
 

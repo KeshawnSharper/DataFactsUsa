@@ -10,11 +10,11 @@ const FactsShema = mongoose.Schema({
     type: String,
   },
   user_id: {
-    type:Decimal128,
+    type:Number,
     required: true
   },
   id:{
-    type:Decimal128,
+    type:Number,
   }
 });
 
