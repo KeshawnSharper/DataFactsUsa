@@ -16,6 +16,4 @@ db.once("open", function () {
 server.listen(PORT, () => {
     
   console.log(`Listening on port ${PORT}...`);
- 
-
 });
