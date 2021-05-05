@@ -6,8 +6,8 @@ const facts = require("./facts-model");
 
 router.get("/", async (req, res) => {
   try {
-    let task = await tasks.find();
-    res.json(task);
+    let allFacts = await facts.find();
+    res.json(allFacts);
   } catch (e) {
     res.json({ msg: e });
   }

@@ -11,6 +11,9 @@ const UsersShema = mongoose.Schema({
     maxlength:255,
     minlength:0
   },
+  id:{
+    type:Decimal128,
+  }
 });
 
 module.exports = mongoose.model("users", UsersShema);

@@ -1,3 +1,4 @@
+const { Int32 } = require("bson");
 const mongoose = require("mongoose");
 
 const FactsShema = mongoose.Schema({
@@ -9,8 +10,11 @@ const FactsShema = mongoose.Schema({
     type: String,
   },
   user_id: {
-    type: String,
+    type:Decimal128,
     required: true
+  },
+  id:{
+    type:Decimal128,
   }
 });
 
