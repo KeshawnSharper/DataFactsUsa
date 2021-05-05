@@ -24,8 +24,7 @@ router.post("/", async (req, res) => {
 });
 router.get("/user/:user_id", async (req, res) => {
   try {
-    let userFacts = await facts.find({id:req.params.user_id});
-    res.json(userFacts);
+    res.json(await facts.find({id:req.params.user_id}));
   } catch (e) {
     res.json({ msg: e });
   }
