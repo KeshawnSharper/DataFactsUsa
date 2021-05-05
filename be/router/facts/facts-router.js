@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
 });
 router.post("/", async (req, res) => {
   try {
+    req.body.id = await facts.count() + 1
     await facts.create(
       req.body
 )
