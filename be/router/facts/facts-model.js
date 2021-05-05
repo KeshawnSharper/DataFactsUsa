@@ -8,6 +8,9 @@ const TasksShema = mongoose.Schema({
   description: {
     type: String,
   },
+  user_id: {
+    type: String
+  }
 });
 
 module.exports = mongoose.model("tasks", TasksShema);
