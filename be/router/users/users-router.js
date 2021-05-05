@@ -17,6 +17,7 @@ router.post("/register", async (req, res) => {
     let user = req.body
     let hash = bcrypt.hashSync(user.password,13)
     user.password = hash
+    user.id = await users.count() + 1
     await users.create(
         user
 )
