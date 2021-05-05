@@ -34,12 +34,12 @@ router.post("/register", async (req, res) => {
 
     try {
       if (bcrypt.compareSync(user.password,login.password)){
-      res.json({ username:user.username,id:user._id,token:jwt.sign({
-        userid:user._id,
+      res.json({ id:login.id,username:user.username,token:jwt.sign({
+        id:login.id,
         username:user.username
       },"secret",{
         expiresIn:"1d"
-      }) })
+      })})
       }
     } catch (e) {
       res.json({ msg: e });
