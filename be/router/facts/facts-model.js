@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const TasksShema = mongoose.Schema({
+const FactsShema = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -9,8 +9,9 @@ const TasksShema = mongoose.Schema({
     type: String,
   },
   user_id: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
-module.exports = mongoose.model("tasks", TasksShema);
+module.exports = mongoose.model("facts", FactsShema);
