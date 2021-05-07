@@ -75,7 +75,7 @@ describe("", () => {
   })
 })
 describe("", () => {
-  it("Test if the server fails when you forget the  property", done => {
+  it("Test if the server fails when you forget the user id  property", done => {
     chai
       .request(server)
       .post("/facts")
@@ -85,7 +85,7 @@ describe("", () => {
       })
       .end((err, res) => {
         expect(res).to.have.status(500)
-        expect(res.body.message === "Please add a title property")
+        expect(res.body.message === "Please add a user_id property")
         done();
       })
   })
