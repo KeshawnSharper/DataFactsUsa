@@ -41,3 +41,20 @@ describe("", () => {
       })
   })
 })
+describe("", () => {
+  it("Returns a ID thats a number", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "title":"wassup",
+        "user_id":1,
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(200)
+        expect(res.body.id).to.be.a("number")
+        done();
+      })
+  })
+})
