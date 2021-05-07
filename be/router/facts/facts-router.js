@@ -12,6 +12,9 @@ router.get("/", async (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
+  if (!req.body.title)  {
+    res.status(500).json({message:"Please add a title property"})
+  }
   try {
     req.body.id = await facts.countDocuments() + 1
     await facts.create(

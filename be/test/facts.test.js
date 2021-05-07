@@ -58,3 +58,35 @@ describe("", () => {
       })
   })
 })
+describe("", () => {
+  it("Test if the server fails when you forget the title property", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "user_id":1,
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(500)
+        expect(res.body.message === "Please add a title property")
+        done();
+      })
+  })
+})
+describe("", () => {
+  it("Test if the server fails when you forget the  property", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "title":"hello",
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(500)
+        expect(res.body.message === "Please add a title property")
+        done();
+      })
+  })
+})
