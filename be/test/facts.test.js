@@ -5,7 +5,7 @@ const { expect } = chai;
 chai.use(chaiHttp);
 var server = require( '../index' )
 
-describe("", () => {
+describe(", () => {
     it("Get all facts!", done => {
       chai
         .request(server)
