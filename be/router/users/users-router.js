@@ -45,4 +45,4 @@ router.post("/register", async (req, res) => {
       res.json({ msg: e });
     }
   });
-module.exports = router;
+module.exports = router

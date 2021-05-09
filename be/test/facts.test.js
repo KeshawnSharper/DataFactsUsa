@@ -1,9 +1,10 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-
+const jwt = require("jsonwebtoken")
 const { expect } = chai;
 chai.use(chaiHttp);
 var server = require( '../index' )
+const users = require("../router/users/users-model");
 
 describe("", () => {
     it("Get all facts!", done => {
@@ -86,6 +87,63 @@ describe("", () => {
       .end((err, res) => {
         expect(res).to.have.status(500)
         expect(res.body.message === "Please add a user_id property")
+        done();
+      })
+  })
+})
+describe("", async () => {
+  let userCount = await users.countDocuments()
+  it("Should fail if user doesn't exsist ", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "title":"hello",
+        "user_id":userCount + 1,
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(500)
+        expect(res.body.message === "User Doesn't exsist")
+        done();
+      })
+  })
+})
+// describe("", async () => {
+//   let userCount = await users.countDocuments()
+//   it("Verify a token", done => {
+//     // jwt.verify("ftgyh5uj6tgrfdethydfedju", "hello", () => {
+//     //   console.log("hello") // bar
+//     // })
+//     chai
+//       .request(server)
+//       .post("/facts")
+//       .send({
+//         "title":"hello",
+//         "user_id":userCount + 1,
+//         "description":"errtkfkhbm"
+//       })
+//       .end((err, res) => {
+//         expect(res).to.have.status(500)
+//         expect(res.body.message === "User Doesn't exsist")
+//         done();
+//       })
+//   })
+// })
+describe("", async () => {
+  let userCount = await users.countDocuments()
+  it("Should fail if user doesn't exsist ", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "title":"hello",
+        "user_id":userCount + 1,
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(500)
+        expect(res.body.message === "User Doesn't exsist")
         done();
       })
   })
