@@ -148,3 +148,39 @@ describe("", async () => {
       })
   })
 })
+describe("", async () => {
+  let userCount = await users.countDocuments()
+  it("Should fail if user doesn't exsist ", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "title":"hello",
+        "user_id":userCount + 1,
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(500)
+        expect(res.body.message === "User Doesn't exsist")
+        done();
+      })
+  })
+})
+describe("", async () => {
+  let userCount = await users.countDocuments()
+  it("Should fail if user doesn't exsist ", done => {
+    chai
+      .request(server)
+      .post("/facts")
+      .send({
+        "title":"hello",
+        "user_id":userCount + 1,
+        "description":"errtkfkhbm"
+      })
+      .end((err, res) => {
+        expect(res).to.have.status(500)
+        expect(res.body.message === "User Doesn't exsist")
+        done();
+      })
+  })
+})
