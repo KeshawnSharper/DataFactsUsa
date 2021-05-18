@@ -4,7 +4,16 @@ const chaiHttp = require("chai-http");
 const { expect } = chai;
 chai.use(chaiHttp);
 var server = require( '../index' )
-
+function sampleChaiTest(type,endpoint = "/",){
+return type === "get" ? 
+chai
+.request(server)
+.get(`/users${endpoint}`)
+:
+chai
+.request(server)
+.post(`/users${endpoint}`)
+}
 describe("", () => {
     it("Get all users!", done => {
       chai
@@ -18,9 +27,7 @@ describe("", () => {
 })
 describe("", () => {
     it("Get all users should be array!", done => {
-      chai
-        .request(server)
-        .get("/users")
+        sampleChaiTest("get")
         .end((err, res) => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.a('array')
@@ -30,9 +37,7 @@ describe("", () => {
 })
 describe("", () => {
     it("Get all users length should be above 0", done => {
-      chai
-        .request(server)
-        .get("/users")
+        sampleChaiTest("get")
         .end((err, res) => {
           expect(res).to.have.status(200);
           expect(res.body.length > 0)
@@ -65,11 +70,10 @@ describe("", async() => {
         })
     })
 })
+
 describe("", async() => {
     it("Must have password to register", done => {
-     let request =  chai
-        .request(server)
-        .post("/users/register")
+        sampleChaiTest("post","/register")
         .send({
             'username':"hjfejejfrej"
         })
