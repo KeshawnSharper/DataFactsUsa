@@ -14,7 +14,12 @@ router.get("/", async (req, res) => {
   }
 });
 router.post("/register", async (req, res) => {
+
     let user = req.body
+    console.log(!user.username || !user.password)
+    if (!user.username || !user.password) {
+      return res.status(400).json("Please add username and password fields");
+    }
     let hash = bcrypt.hashSync(user.password,13)
     user.password = hash
     user.id = await users.count() + 1
