@@ -90,3 +90,16 @@ describe("", async() => {
         })
     })
 })
+describe("", async() => {
+    it("password fails if not a string", done => {
+        sampleChaiTest("post","/register")
+        .send({
+            'username':'cvifjklefo0i',
+            'password':1233456543
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(400);
+          done();
+        })
+    })
+})
