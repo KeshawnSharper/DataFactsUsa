@@ -16,9 +16,7 @@ chai
 }
 describe("", () => {
     it("Get all users!", done => {
-      chai
-        .request(server)
-        .get("/users")
+        sampleChaiTest("get")
         .end((err, res) => {
           expect(res).to.have.status(200);
           done();
@@ -47,9 +45,7 @@ describe("", () => {
 })
 describe("", async() => {
     it("Cant register with empty body", done => {
-     let request =  chai
-        .request(server)
-        .post("/users/register")
+        sampleChaiTest("post","/register")
         .end((err, res) => {
           expect(res).to.have.status(400);
           done();
@@ -58,9 +54,7 @@ describe("", async() => {
 })
 describe("", async() => {
     it("Must have username to register", done => {
-     let request =  chai
-        .request(server)
-        .post("/users/register")
+        sampleChaiTest("post","/register")
         .send({
             'password':"hjfejejfrej"
         })
