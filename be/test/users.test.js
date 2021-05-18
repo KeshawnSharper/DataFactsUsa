@@ -120,11 +120,11 @@ describe("", async() => {
     it("if user  doesnt return exsist 200", done => {
         sampleChaiTest("post","/register")
         .send({
-            'username':"youremail15246@gmail.com",
-            'password':'youremail152467@gmail.com'
+            'username':"sdffgdsergftcxzsrtfcdsaer",
+            'password':'youremail152467'
         })
         .end((err, res) => {
-          expect(res).to.have.status(402);
+          expect(res).to.have.status(200);
           done();
         })
     })
