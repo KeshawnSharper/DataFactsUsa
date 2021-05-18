@@ -52,12 +52,26 @@ describe("", async() => {
     })
 })
 describe("", async() => {
-    it("Must have username", done => {
+    it("Must have username to register", done => {
      let request =  chai
         .request(server)
         .post("/users/register")
         .send({
             'password':"hjfejejfrej"
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(400);
+          done();
+        })
+    })
+})
+describe("", async() => {
+    it("Must have password to register", done => {
+     let request =  chai
+        .request(server)
+        .post("/users/register")
+        .send({
+            'username':"hjfejejfrej"
         })
         .end((err, res) => {
           expect(res).to.have.status(400);
