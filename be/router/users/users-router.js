@@ -16,22 +16,30 @@ router.get("/", async (req, res) => {
 router.post("/register", async (req, res) => {
 
     let user = req.body
-    console.log(!user.username || !user.password)
+    
     if (!user.username || !user.password) {
       return res.status(400).json("Please add username and password fields");
     }
-    if (typeof user.username !== String || typeof user.password !== String ) {
+    if (typeof user.username !== "string" || typeof user.password !== "string" ) {
       return res.status(400).json("Username or password cant be integers");
     }
+    if(await users.findOne({
+      username:user.username})
+    ){
+      return res.status(402).json("User already exsist");
+    }
+
     let hash = bcrypt.hashSync(user.password,13)
     user.password = hash
-    user.id = await users.count() + 1
+    user.id = await users.countDocuments() + 1
+
     await users.create(
         user
 )
     try {
     res.json(user);
     } catch (e) {
+      console.log("failed")
       res.json({ msg: e });
     }
   });

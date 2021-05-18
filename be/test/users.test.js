@@ -103,3 +103,29 @@ describe("", async() => {
         })
     })
 })
+describe("", async() => {
+    it("if user exsist return 402", done => {
+        sampleChaiTest("post","/register")
+        .send({
+            'username':"youremail15246@gmail.com",
+            'password':'youremail152467@gmail.com'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(402);
+          done();
+        })
+    })
+})
+describe("", async() => {
+    it("if user  doesnt return exsist 200", done => {
+        sampleChaiTest("post","/register")
+        .send({
+            'username':"youremail15246@gmail.com",
+            'password':'youremail152467@gmail.com'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(402);
+          done();
+        })
+    })
+})
