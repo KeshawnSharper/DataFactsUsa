@@ -20,6 +20,9 @@ router.post("/register", async (req, res) => {
     if (!user.username || !user.password) {
       return res.status(400).json("Please add username and password fields");
     }
+    if (typeof user.username !== String || typeof user.password !== String ) {
+      return res.status(400).json("Username or password cant be integers");
+    }
     let hash = bcrypt.hashSync(user.password,13)
     user.password = hash
     user.id = await users.count() + 1

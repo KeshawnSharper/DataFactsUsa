@@ -77,14 +77,16 @@ describe("", async() => {
         })
     })
 })
-// describe("", async() => {
-//     it("username must be a string", done => {
-//      let request =  chai
-//         .request(server)
-//         .post("/users/register")
-//         .end((err, res) => {
-//           expect(res).to.have.status(400);
-//           done();
-//         })
-//     })
-// })
+describe("", async() => {
+    it("username fails if not a string", done => {
+        sampleChaiTest("post","/register")
+        .send({
+            'username':1233456543,
+            'password':'cvifjklefo0i'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(400);
+          done();
+        })
+    })
+})
