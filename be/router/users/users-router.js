@@ -47,6 +47,7 @@ router.post("/register", async (req, res) => {
     let user = req.body
     let login = await users.findOne({
       username:user.username}).exec()
+      
 
     try {
       if (bcrypt.compareSync(user.password,login.password)){
@@ -57,8 +58,11 @@ router.post("/register", async (req, res) => {
         expiresIn:"1d"
       })})
       }
+      else{
+        res.status(401).json({ msg: "invalid password try again" });
+      }
     } catch (e) {
-      res.json({ msg: e });
+      res.status(401).json({ msg: "invalid username try again" });
     }
   });
 module.exports = router;

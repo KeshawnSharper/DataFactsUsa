@@ -116,15 +116,30 @@ describe("", async() => {
         })
     })
 })
+
 describe("", async() => {
-    it("if user  doesnt return exsist 200", done => {
-        sampleChaiTest("post","/register")
+    it("login", done => {
+        sampleChaiTest("post","/login")
         .send({
             'username':"sdffgdsergftcxzsrtfcdsaer",
             'password':'youremail152467'
         })
         .end((err, res) => {
           expect(res).to.have.status(200);
+          expect(res.body.token)
+          done();
+        })
+    })
+})
+describe("", async() => {
+    it("Should return 401 with an invalid username", done => {
+        sampleChaiTest("post","/login")
+        .send({
+            'username':"sdffgdsergftcxzsrtfcdsae",
+            'password':'youremail152467'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(401);
           done();
         })
     })
