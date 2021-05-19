@@ -144,3 +144,16 @@ describe("", async() => {
         })
     })
 })
+describe("", async() => {
+    it("Should return 401 with an invalid password", done => {
+        sampleChaiTest("post","/login")
+        .send({
+            'username':"sdffgdsergftcxzsrtfcdsaer",
+            'password':'youremail15246'
+        })
+        .end((err, res) => {
+          expect(res).to.have.status(401);
+          done();
+        })
+    })
+})
