@@ -65,4 +65,4 @@ router.post("/register", async (req, res) => {
       res.status(401).json({ msg: "invalid username try again" });
     }
   });
-module.exports = router
+module.exports = router;
