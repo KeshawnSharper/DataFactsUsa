@@ -3,7 +3,7 @@ const chaiHttp = require("chai-http");
 // const jwt = require("jsonwebtoken")
 const { expect } = chai;
 chai.use(chaiHttp);
-var server = require( '../../index' )
+var server = require( '../index' )
 const users = require("../router/users/users-model");
 
 describe("", () => {
