@@ -109,26 +109,6 @@ describe("", async () => {
       })
   })
 })
-// describe("", async () => {
-//   let userCount = await users.countDocuments()
-//   it("Verify a token", done => {
-//     // jwt.verify("ftgyh5uj6tgrfdethydfedju", "hello", () => {
-//     //   console.log("hello") // bar
-//     // })
-//     chai
-//       .request(server)
-//       .post("/facts")
-//       .send({
-//         "title":"hello",
-//         "user_id":userCount + 1,
-//         "description":"errtkfkhbm"
-//       })
-//       .end((err, res) => {
-//         expect(res).to.have.status(500)
-//         expect(res.body.message === "User Doesn't exsist")
-//         done();
-//       })
-//   })
-// })
+
 
 
