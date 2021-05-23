@@ -13,7 +13,7 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
   console.log("hurray! We connected");
 });
-server.listen(PORT, () => {
+server.listen(PORT,"0.0.0.0", () => {
     
   console.log(`Listening on port ${PORT}...`);
 });
