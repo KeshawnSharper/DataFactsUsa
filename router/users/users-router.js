@@ -37,7 +37,7 @@ router.post("/register", async (req, res) => {
         user
 )
     try {
-    res.json(user);
+    res.json({"username":user.username,"password":user.password,"id":user.id});
     } catch (e) {
       console.log("failed")
       res.json({ msg: e });
@@ -47,7 +47,6 @@ router.post("/register", async (req, res) => {
     let user = req.body
     let login = await users.findOne({
       username:user.username}).exec()
-      
 
     try {
       if (bcrypt.compareSync(user.password,login.password)){
