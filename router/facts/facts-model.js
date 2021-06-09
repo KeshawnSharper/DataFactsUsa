@@ -2,19 +2,16 @@ const { Int32 } = require("bson");
 const mongoose = require("mongoose");
 
 const FactsShema = mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
+  data:{
+    type:Array,
+    required:true
   },
   user_id: {
     type:Number,
     required: true
   },
   id:{
-    type:Number,
+    type:String,
   }
 });
 

@@ -12,14 +12,14 @@ router.get("/", async (req, res) => {
   }
 });
 router.post("/", async (req, res) => {
-  if (!req.body.title)  {
-    res.status(500).json({message:"Please add a title property"})
-  }
   if (!req.body.user_id)  {
     res.status(500).json({message:"Please add a user_id property"})
   }
+  else if (!req.body.id)  {
+     res.status(500).json({message:"Please add an id property"})
+  }
+  else{
   try {
-    req.body.id = await facts.countDocuments() + 1
     await facts.create(
       req.body
 )
@@ -27,6 +27,7 @@ router.post("/", async (req, res) => {
   } catch (e) {
     res.json({ msg: e });
   }
+}
 });
 router.get("/user/:user_id", async (req, res) => {
   try {
